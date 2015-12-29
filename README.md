@@ -6,9 +6,9 @@ Random number generators based on chaotic functions. The main works inspiring pr
 
 ## rng01-vhdl
 
-Two preliminary versions of the chaotic random number generator in VHDL code. The two circuits are synchronous.
+Preliminary version of the chaotic random number generator in VHDL code. 
 
-*newCaoticGen* is the main circuit, performing an iteration of the chaotic map described in [1]. The package with constants definitions is *variable_Caos*, and *test* is the testbench.
+*newCaoticGen* is the main circuit, performing an iteration a chaotic map described in [1]. The package with constants definitions is *variable_Caos*, and *test* is the testbench.
 
 ## rng02-vhdl
 
