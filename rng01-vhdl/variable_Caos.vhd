@@ -69,31 +69,11 @@ variable res1: integer;
 
 begin
 
---if (k(scalamento)= '1') then
---	sott :=	conv_signed(2**((scalamento)+1),numBit)- k;
---	res  :=	((2**(scalamento+1)) * conv_integer(x))/(2**(scalamento));
---else	
---	sott :=	conv_signed(2**((scalamento)),numBit)- k;
---	res  :=	((2**(scalamento)) * conv_integer(x))/(2**(scalamento));
---	
---end if;	
---	for i in 1 to scalamento loop
---		if(sott((scalamento)-i) = '1')then
---			res := res - ((2**(scalamento-i)) * conv_integer(x))/(2**(scalamento));
---		end if;
---	end loop;
---return res;
-
-    --res := (conv_integer(x)/(2**(numBit/2)))*(conv_integer(k)/(2**(numBit/2)));
     res := ((2**(numBit-2))/(2**(numBit/2)))* (conv_integer(x)/(2**(numBit/2)));
     res1 := (2 * (2**(numBit - Nint - 3)))/( (2**(numBit/2)) ) * (conv_integer(x)/(2**(numBit/2)));
 
     res :=2*res-res1/2;
     res := (2**Nint) * res;
-    --res := (((2**numBit-1)/(2**(numBit/2))) * (conv_integer(x)/(2**(numBit/2))))-(((conv_integer(1/8 * 2**(numBit-1))/(2**(numBit/2))))*(conv_integer(x)/(2**(numBit/2))));
-    --res := (2**Nint) * res;
-    --res := res/4;
-    --res :=(conv_integer(x)*conv_integer(k))/(2**(scalamento));
 
 return res;
 
