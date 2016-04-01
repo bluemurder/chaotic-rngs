@@ -57,7 +57,6 @@ int main(int argc, char** argv)
 
     outfile << "end randgen_package;\n";
 
-
     outfile << "package body randgen_package is\n";
 
     outfile << "end randgen_package;\n";

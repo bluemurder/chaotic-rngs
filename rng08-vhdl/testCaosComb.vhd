@@ -50,55 +50,55 @@ ARCHITECTURE behavior OF testCaosComb IS
     END COMPONENT;
     
 
-   --Inputs
-   signal ck : std_logic := '0';
-   signal res : std_logic := '0';
+    --Inputs
+    signal ck : std_logic := '0';
+    signal res : std_logic := '0';
 
- 	--Outputs
-   signal out0 : std_logic;
+    --Outputs
+    signal out0 : std_logic;
  
-   constant ck_period : time := 10 ns;
+    constant ck_period : time := 10 ns;
  
 BEGIN
  
-	-- Instantiate the Unit Under Test (UUT)
-   uut: CaosComb PORT MAP (
-          res => res,
-          out0 => out0
+    -- Instantiate the Unit Under Test (UUT)
+    uut: CaosComb PORT MAP (
+        res => res,
+        out0 => out0
         );
 
-   -- Clock process definitions
-   ck_process :process
-   begin
-		ck <= '0';
-		wait for ck_period/2;
-		ck <= '1';
-		wait for ck_period/2;
-   end process;
+    -- Clock process definitions
+    ck_process :process
+    begin
+        ck <= '0';
+        wait for ck_period/2;
+        ck <= '1';
+        wait for ck_period/2;
+    end process;
  
 
-   -- Stimulus process
-   stim_proc: process
-   begin				
-      -- hold reset state for 100 ns.
-		res <= '1';
-      wait for 100 ns;	
-		res<='0';
-		-- write a single line
-		wait;
-   end process;
-	
-	-- Write bigregister process
-	write_file: process (ck) is
-		file my_output : TEXT open WRITE_MODE is "Test.out";
-		variable my_output_line :  LINE;
-	begin
-		if rising_edge(ck) then
-		   if res = '0' then
-				write(my_output_line,out0);
-				writeline(my_output, my_output_line);
-			end if;
-		end if;
-	end process write_file;
+    -- Stimulus process
+    stim_proc: process
+    begin
+        -- hold reset state for 100 ns.
+        res <= '1';
+        wait for 100 ns;    
+        res<='0';
+        -- write a single line
+        wait;
+    end process;
+    
+    -- Write bigregister process
+    write_file: process (ck) is
+        file my_output : TEXT open WRITE_MODE is "Test.out";
+        variable my_output_line :  LINE;
+    begin
+        if rising_edge(ck) then
+           if res = '0' then
+                write(my_output_line,out0);
+                writeline(my_output, my_output_line);
+            end if;
+        end if;
+    end process write_file;
 
 END;

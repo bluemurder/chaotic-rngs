@@ -39,7 +39,7 @@ use work.variable_Caos.all ;
 
 entity newCaoticGen2 is
     Port ( Clk : in  STD_LOGIC;
-			  reset : IN  std_logic;
+              reset : IN  std_logic;
            X_out : out  signed(numbit-1 downto 0));
 end newCaoticGen2;
 
@@ -61,26 +61,22 @@ variable temp: integer;
 
 begin
 X_out <= x;
-	if reset = '0' then
-		if (Clk'event and Clk ='1') then
-			if (x < conv_signed(0,numBit)) then
-				temp:=mult(k,x);
-				x <= conv_signed(2**(scalamento)  + temp,numBit);
-				temp := 0;
-			else
-				temp:=mult(k,x);
-			
-				x <= conv_signed(-2**(scalamento)+temp,numBit);
-				temp:=0;
-			
-			end if;
-		end if;
-	end if;
+    if reset = '0' then
+        if (Clk'event and Clk ='1') then
+            if (x < conv_signed(0,numBit)) then
+                temp:=mult(k,x);
+                x <= conv_signed(2**(scalamento)  + temp,numBit);
+                temp := 0;
+            else
+                temp:=mult(k,x);
+            
+                x <= conv_signed(-2**(scalamento)+temp,numBit);
+                temp:=0;
+            
+            end if;
+        end if;
+    end if;
 
-
-	
-	
-	
 --X_out <=k;
 end process;
 
